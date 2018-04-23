@@ -1,0 +1,3 @@
+LIBRARY LOPES_3D_sfun.mexw64
+EXPORTS
+mexFunction

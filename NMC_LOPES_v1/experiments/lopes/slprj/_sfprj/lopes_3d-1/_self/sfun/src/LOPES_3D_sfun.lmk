@@ -1,0 +1,42 @@
+CC     = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"LOPES_3D_sfun.obj"\
+	"c3_LOPES_3D.obj"\
+	"LOPES_3D_sfun_registry.obj"\
+	"lccstub.obj"\
+	"LOPES_3D_sfun.def"\
+	"C:\Users\brugtjh\Dropbox\universiteit\5. Researcher\LOPES 3D Geyer\Reflex3DModel\Experiments\LOPES\slprj\_sfprj\LOPES_3D\nmc\sfun\src\nmc_sfun.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwblas.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwlapack.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmx.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmex.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmat.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libut.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsimulink.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsl_sfcn_cov_bridge.lib"\
+	"C:\Program Files\MATLAB\R2015b\lib\win64\libmwipp.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\include64"  -I"C:\Program Files\MATLAB\R2015b\extern\include"  -I"C:\Program Files\MATLAB\R2015b\simulink\include"  -I"C:\Program Files\MATLAB\R2015b\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2015b\rtw\c\src"  -I"C:\Users\brugtjh\Dropbox\universiteit\5. Researcher\LOPES 3D Geyer\Reflex3DModel\Experiments\LOPES\slprj\_sfprj\LOPES_3D\_self\sfun\src" 
+ 
+
+LOPES_3D_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o LOPES_3D_sfun.mexw64 @LOPES_3D_sfun.lmko
+LOPES_3D_sfun.obj :	"LOPES_3D_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "LOPES_3D_sfun.c"
+c3_LOPES_3D.obj :	"c3_LOPES_3D.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_LOPES_3D.c"
+LOPES_3D_sfun_registry.obj :	"LOPES_3D_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "LOPES_3D_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\mex\lccstub.c"
